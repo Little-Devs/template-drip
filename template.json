@@ -19,7 +19,8 @@
     "Light-custom: logo, colours, fonts, and copy",
     "Section on/off for hero, roastery, lots, cupping, room, and contact",
     "Charcoal, cherrywood, cream, and ember palette",
-    "Cupping-sheet hero",
+    "Cupping-sheet hero with Bricolage Grotesque, Source Serif 4, and IBM Plex Mono",
+    "Mailto contact form",
     "Fully responsive Astro SSG"
   ],
   "aesthetic": {
@@ -42,7 +43,9 @@
       "charcoal": "#1c1814",
       "cherrywood": "#6b2e24",
       "cream": "#efe6d4",
-      "ember": "#c45a32"
+      "ember": "#c45a32",
+      "parchment": "#f6f0e4",
+      "ash": "#8a8175"
     }
   },
   "sections": [
@@ -57,7 +60,7 @@
     "Coffee roasteries",
     "Cupping rooms",
     "Specialty coffee shops",
-    "Hospitality brands"
+    "Hospitality landings"
   ],
   "customization": {
     "difficulty": "easy",
