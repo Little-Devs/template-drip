@@ -1,0 +1,119 @@
+---
+import { site } from '../data/site';
+const { logo, nav } = site;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label={`${site.name} — home`}>
+      <span class="brand-mark" aria-hidden="true">{logo.mark}</span>
+      <span class="brand-name">{logo.name}</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      {nav.map((item) => <a class="nav-link" href={item.href}>{item.label}</a>)}
+      <a class="nav-chip" href="#cupping">Sat cupping 10:00</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(28, 24, 20, 0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--cherrywood);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    padding-block: 0.85rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    background: var(--cherrywood);
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    border-radius: 3px;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.12rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.15rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(239, 230, 212, 0.78);
+    padding-block: 0.3rem;
+    border-bottom: 1.5px solid transparent;
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+
+  .nav-link:hover {
+    color: var(--ember);
+    border-bottom-color: var(--ember);
+  }
+
+  .nav-chip {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--parchment);
+    background: var(--ember);
+    padding: 0.42rem 0.7rem;
+    border-radius: 3px;
+    transition: background-color 150ms ease;
+  }
+
+  .nav-chip:hover {
+    background: var(--cherrywood);
+  }
+
+  @media (max-width: 720px) {
+    .bar {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .nav {
+      justify-content: center;
+    }
+  }
+</style>
