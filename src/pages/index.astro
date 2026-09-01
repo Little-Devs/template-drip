@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Roastery from '../components/Roastery.astro';
+import Lots from '../components/Lots.astro';
+import Cupping from '../components/Cupping.astro';
+import Room from '../components/Room.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../data/site';
+const { sections } = site;
+---
+
+<BaseLayout>
+  {sections.hero && <Hero />}
+  {sections.roastery && <Roastery />}
+  {sections.lots && <Lots />}
+  {sections.cupping && <Cupping />}
+  {sections.room && <Room />}
+  {sections.contact && <Contact />}
+</BaseLayout>

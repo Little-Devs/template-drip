@@ -1,0 +1,80 @@
+---
+import { site } from '../data/site';
+const { roastery } = site;
+---
+
+<section class="section" id={roastery.id}>
+  <div class="wrap grid">
+    <div class="prose">
+      <p class="eyebrow">{roastery.eyebrow}</p>
+      <h2>{roastery.heading}</h2>
+      {roastery.paras.map((para) => <p class="body">{para}</p>)}
+      <p class="aside">{roastery.aside}</p>
+    </div>
+    <dl class="ledger side">
+      {roastery.ledger.map((item) => (
+        <div>
+          <dt>{item.term}</dt>
+          <dd>{item.detail}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  h2 {
+    font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+    letter-spacing: -0.01em;
+    max-width: 18ch;
+    margin-bottom: 1.3rem;
+  }
+
+  .body {
+    max-width: 34rem;
+    color: rgba(239, 230, 212, 0.85);
+  }
+
+  .body + .body {
+    margin-top: 1rem;
+  }
+
+  .aside {
+    margin-top: 1.6rem;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--ember);
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--cream);
+  }
+
+  .ledger.side {
+    border-top-color: var(--cream-rule);
+    margin-top: 0.4rem;
+  }
+
+  .ledger.side > div {
+    border-bottom-color: var(--cream-rule);
+  }
+
+  .ledger.side dt {
+    color: var(--ash);
+  }
+
+  .ledger.side dd {
+    color: var(--cream);
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

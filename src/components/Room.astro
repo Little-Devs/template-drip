@@ -1,0 +1,79 @@
+---
+import { site } from '../data/site';
+const { room } = site;
+---
+
+<section class="section" id={room.id}>
+  <div class="wrap grid">
+    <div class="media">
+      <img src={room.image} alt={room.imageAlt} width="800" height="620" loading="lazy" />
+    </div>
+    <div class="content">
+      <p class="eyebrow">{room.eyebrow}</p>
+      <h2>{room.heading}</h2>
+      {room.paras.map((para) => <p class="body">{para}</p>)}
+      <dl class="ledger hours">
+        {room.hours.map((row) => (
+          <div>
+            <dt>{row.days}</dt>
+            <dd class:list={[{ shut: !row.open }]}>{row.time}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(2.2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .media img {
+    width: 100%;
+    height: 100%;
+    min-height: 20rem;
+    max-height: 28rem;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid var(--cream-rule);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+  }
+
+  .body {
+    color: rgba(239, 230, 212, 0.85);
+    max-width: 30rem;
+  }
+
+  .body + .body {
+    margin-top: 0.9rem;
+  }
+
+  .hours {
+    margin-top: 1.7rem;
+    max-width: 24rem;
+  }
+
+  .hours dd.shut {
+    color: var(--ember);
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .media img {
+      min-height: 13rem;
+      max-height: 17rem;
+    }
+  }
+</style>
