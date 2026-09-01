@@ -1,0 +1,89 @@
+---
+import { site } from '../data/site';
+const { footer, contact, room } = site;
+---
+
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div class="col">
+      <p class="brand">
+        <span class="mark" aria-hidden="true">{site.logo.mark}</span>
+        <span class="name">{site.name}</span>
+      </p>
+      <p class="credit">{footer.credit}</p>
+    </div>
+    <div class="col">
+      <p class="mono-line">{footer.address}</p>
+      <p class="mono-line"><a href={contact.phoneHref}>{contact.phone}</a></p>
+    </div>
+    <div class="col">
+      <p class="mono-line">{footer.hours}</p>
+      <p class="mono-line"><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--charcoal);
+    border-top: 1px solid var(--cherrywood);
+    padding-block: 2.4rem 2.8rem;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.6rem 3rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mark {
+    display: grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: var(--cherrywood);
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 3px;
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .mono-line {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    line-height: 1.7;
+    color: var(--ash);
+  }
+
+  .mono-line a {
+    color: inherit;
+    text-decoration-color: var(--cherrywood);
+    text-underline-offset: 3px;
+  }
+
+  .mono-line a:hover {
+    color: var(--ember);
+  }
+
+  .credit {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: rgba(138, 129, 117, 0.75);
+  }
+</style>

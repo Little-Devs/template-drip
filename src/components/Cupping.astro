@@ -1,0 +1,103 @@
+---
+import { site } from '../data/site';
+const { cupping } = site;
+---
+
+<section class="section" id={cupping.id}>
+  <div class="wrap">
+    <div class="panel">
+      <div class="media">
+        <img src={cupping.image} alt={cupping.imageAlt} width="800" height="640" loading="lazy" />
+      </div>
+      <div class="content">
+        <p class="eyebrow wood">{cupping.eyebrow}</p>
+        <h2>{cupping.heading}</h2>
+        {cupping.paras.map((para) => <p class="body">{para}</p>)}
+        <dl class="ledger">
+          {cupping.ledger.map((item) => (
+            <div>
+              <dt>{item.term}</dt>
+              <dd>{item.detail}</dd>
+            </div>
+          ))}
+        </dl>
+        <a class="btn btn-cream" href={cupping.cta.href}>{cupping.cta.label}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .panel {
+    background: var(--cherrywood);
+    color: var(--cream);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: clamp(1.8rem, 4vw, 3.2rem);
+    padding: clamp(1.6rem, 4vw, 3rem);
+    align-items: center;
+  }
+
+  .media img {
+    width: 100%;
+    height: 100%;
+    min-height: 22rem;
+    max-height: 30rem;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid rgba(246, 240, 228, 0.3);
+  }
+
+  .eyebrow.wood {
+    color: rgba(246, 240, 228, 0.66);
+  }
+
+  .eyebrow.wood::before {
+    background: var(--parchment);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    letter-spacing: -0.01em;
+    max-width: 16ch;
+    margin-bottom: 1.2rem;
+  }
+
+  .body {
+    color: rgba(246, 240, 228, 0.88);
+    max-width: 32rem;
+  }
+
+  .body + .body {
+    margin-top: 0.9rem;
+  }
+
+  .ledger {
+    margin: 1.6rem 0 1.8rem;
+    border-top-color: rgba(246, 240, 228, 0.28);
+  }
+
+  .ledger > div {
+    border-bottom-color: rgba(246, 240, 228, 0.28);
+  }
+
+  .ledger dt {
+    color: rgba(246, 240, 228, 0.62);
+  }
+
+  .ledger dd {
+    color: var(--parchment);
+  }
+
+  @media (max-width: 900px) {
+    .panel {
+      grid-template-columns: 1fr;
+    }
+
+    .media img {
+      min-height: 14rem;
+      max-height: 18rem;
+    }
+  }
+</style>

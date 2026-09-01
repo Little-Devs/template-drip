@@ -1,0 +1,144 @@
+---
+import { site } from '../data/site';
+const { contact } = site;
+---
+
+<section class="section" id={contact.id}>
+  <div class="wrap">
+    <div class="panel">
+      <div class="content">
+        <p class="eyebrow ink">{contact.eyebrow}</p>
+        <h2>{contact.heading}</h2>
+        {contact.paras.map((para) => <p class="body">{para}</p>)}
+        <p class="phone">
+          Prefer to ring?
+          <a href={contact.phoneHref}>{contact.phone}</a>
+        </p>
+      </div>
+
+      <form class="form" action={`mailto:${contact.email}`} method="post" enctype="text/plain">
+        <div class="field">
+          <label for="name">{contact.fields.name}</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">{contact.fields.email}</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field wide">
+          <label for="note">{contact.fields.note}</label>
+          <textarea id="note" name="note" rows="5" required></textarea>
+        </div>
+        <button class="btn btn-dark" type="submit">{contact.submit}</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .panel {
+    background: var(--parchment);
+    color: var(--charcoal);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: clamp(1.8rem, 5vw, 3.4rem);
+  }
+
+  .eyebrow.ink {
+    color: var(--ash);
+  }
+
+  h2 {
+    font-size: clamp(1.9rem, 4.2vw, 2.7rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+  }
+
+  .body {
+    color: rgba(28, 24, 20, 0.82);
+    max-width: 26rem;
+  }
+
+  .phone {
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ash);
+  }
+
+  .phone a {
+    color: var(--cherrywood);
+    font-weight: 500;
+    text-decoration-color: var(--cherrywood);
+    text-underline-offset: 3px;
+    margin-left: 0.4rem;
+  }
+
+  .phone a:hover {
+    color: var(--ember);
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.3rem 1.4rem;
+    align-content: start;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .field.wide {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  input,
+  textarea {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    color: var(--charcoal);
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--ink-rule);
+    border-radius: 0;
+    padding: 0.5rem 0.1rem;
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-bottom-color: var(--ember);
+  }
+
+  .form .btn {
+    justify-self: start;
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 900px) {
+    .panel {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .form {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
