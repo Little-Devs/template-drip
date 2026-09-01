@@ -1,37 +1,21 @@
 # Drip Theory
 
-Fitzroy coffee roastery and cupping room landing. Charcoal, cherrywood, cream,
-and a cupping-sheet hero. Small-lot coffee roasted twice a week on Brunswick Street.
+Astro 5 static landing for Drip Theory — a coffee roastery and cupping room on Brunswick Street, Fitzroy. Template id `drip`, MIT licensed.
 
 Live demo: https://drip.little.website/
 
-Built with Astro 5 (static output) and a plain CSS design system. No CMS, no auth,
-no payments, no ecommerce — contact goes straight to `mailto:sales@little.cloud`.
+Light-custom only: logo, colours, fonts, copy, and section on/off flags. No CMS, no auth, no payments, no ecommerce.
 
-## Quick start
+- Brand tokens (charcoal / cherrywood / cream / ember, Bricolage Grotesque + Source Serif 4 + IBM Plex Mono): `src/styles/tokens.css`
+- All copy, section flags and data: `src/data/site.ts`
+- Contact form is a plain `mailto:sales@little.cloud` post form — no fake JS submit.
+- Not a restaurant. No dinner service.
 
 ```sh
 bun install
-bun run dev      # local dev server
-bun run build    # static build to dist/
-bun run preview  # preview the build
+bun run dev
+bun run build
 ```
-
-## Customise
-
-Everything copy- and structure-related lives in **src/data/site.ts**:
-
-- `sections` — turn any of `hero, roastery, lots, cupping, room, contact` on/off
-- `nav`, contact, hero cupping sheet, lots, room hours
-- Brand tokens (palette, type) live in **src/styles/tokens.css**
-
-Swap `public/images/*.jpg` for your own roast-room photography and update the credits
-in the footer (`src/components/Footer.astro`).
-
-## Contact form
-
-The contact form composes a `mailto:` to **sales@little.cloud**. It opens the
-visitor's mail client — there is no backend by design. Not a restaurant; no dinner service.
 
 ## License
 

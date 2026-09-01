@@ -1,0 +1,86 @@
+{
+  "id": "drip",
+  "name": "Drip Theory",
+  "description": "Fitzroy coffee roastery and cupping room landing. Charcoal, cherrywood, cream, cupping-sheet hero. Light-custom: logo, colours, fonts, copy, section on/off.",
+  "category": "landing-page",
+  "subcategory": "coffee",
+  "repository": "https://github.com/Little-Devs/template-drip",
+  "demoUrl": "https://drip.little.website/",
+  "previewImage": "",
+  "techStack": {
+    "framework": "Astro",
+    "version": "5.17.1",
+    "styling": "CSS variables",
+    "scripting": "TypeScript",
+    "buildTool": "Vite"
+  },
+  "features": [
+    "Fitzroy coffee roastery and cupping room landing",
+    "Light-custom: logo, colours, fonts, and copy",
+    "Section on/off for hero, roastery, lots, cupping, room, and contact",
+    "Charcoal, cherrywood, cream, and ember palette",
+    "Cupping-sheet hero",
+    "Fully responsive Astro SSG"
+  ],
+  "aesthetic": {
+    "style": "Coffee roastery and cupping room",
+    "description": "Fitzroy coffee roastery and cupping room landing",
+    "fonts": {
+      "display": "Bricolage Grotesque",
+      "ui": "Source Serif 4",
+      "mono": "IBM Plex Mono",
+      "sans": "Bricolage Grotesque",
+      "primary": "Bricolage Grotesque"
+    },
+    "colors": {
+      "primary": "#1c1814",
+      "primaryName": "Charcoal",
+      "accent": "#6b2e24",
+      "accentName": "Cherrywood",
+      "background": "#efe6d4",
+      "backgroundName": "Cream",
+      "charcoal": "#1c1814",
+      "cherrywood": "#6b2e24",
+      "cream": "#efe6d4",
+      "ember": "#c45a32"
+    }
+  },
+  "sections": [
+    "Hero",
+    "Roastery",
+    "Lots",
+    "Cupping",
+    "Room",
+    "Contact"
+  ],
+  "useCases": [
+    "Coffee roasteries",
+    "Cupping rooms",
+    "Specialty coffee shops",
+    "Hospitality brands"
+  ],
+  "customization": {
+    "difficulty": "easy",
+    "colorScheme": "CSS variables",
+    "typography": "Google Fonts (Bricolage Grotesque, Source Serif 4, IBM Plex Mono)",
+    "layout": "CSS Grid + Flexbox"
+  },
+  "performance": {
+    "framework": "Astro (SSG)",
+    "cssOnly": "Most animations",
+    "lighthouse": "90+"
+  },
+  "license": "MIT",
+  "author": "Little-Devs",
+  "createdAt": "2026-09-01",
+  "lastUpdated": "2026-09-01",
+  "tags": [
+    "landing-page",
+    "coffee",
+    "roastery",
+    "hospitality",
+    "astro",
+    "ssg"
+  ],
+  "version": "1.0.0"
+}
