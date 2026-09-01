@@ -1,0 +1,288 @@
+---
+import { site } from '../data/site';
+const { hero } = site;
+const sheet = hero.sheet;
+---
+
+<section class="hero">
+  <div class="wrap grid">
+    <div class="intro">
+      <p class="eyebrow">{hero.kicker}</p>
+      <h1>
+        {hero.titleLead}
+        <em>{hero.titleEm}</em>
+      </h1>
+      <p class="lead">{hero.lead}</p>
+      <div class="actions">
+        <a class="btn btn-paper" href={hero.primary.href}>{hero.primary.label}</a>
+        <a class="btn btn-outline" href={hero.secondary.href}>{hero.secondary.label}</a>
+      </div>
+    </div>
+
+    <div class="sheet-col">
+      <div class="sheet" role="img" aria-label={`Cupping scoresheet for lot ${sheet.lot}: fragrance 8.5, flavour 9, aftertaste 8 — approved for the shelf`}>
+        <div class="sheet-bar">
+          <span>{sheet.header}</span>
+          <span>{sheet.number}</span>
+        </div>
+        <dl class="sheet-meta">
+          <div><dt>Lot</dt><dd>{sheet.lot}</dd></div>
+          <div><dt>Origin</dt><dd>{sheet.origin}</dd></div>
+          <div><dt>Roast date</dt><dd>{sheet.roastDate}</dd></div>
+        </dl>
+        <div class="sheet-rows">
+          {sheet.rows.map((row) => (
+            <div class="score-row">
+              <span class="score-label">{row.label}</span>
+              <span class="score-boxes">
+                {row.scores.map((value, i) => (
+                  <span class:list={['score', { on: i === row.pick }]} style={`--i: ${i}`}>{value}</span>
+                ))}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p class="sheet-notes">
+          <span>{sheet.notesLabel}</span>
+          {sheet.notes}
+        </p>
+        <div class="sheet-verdict">
+          <span class="sheet-total">{sheet.total}</span>
+          <span class="sheet-stamp">{sheet.stamp}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 8vw, 6rem) clamp(3.5rem, 9vw, 6.5rem);
+    background:
+      radial-gradient(120% 90% at 85% 0%, rgba(107, 46, 36, 0.32), transparent 55%),
+      var(--charcoal);
+    border-bottom: 1px solid var(--cream-rule);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 29rem);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(2.55rem, 6.4vw, 4.35rem);
+    letter-spacing: -0.015em;
+    max-width: 12ch;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--ember);
+  }
+
+  .lead {
+    margin-top: 1.4rem;
+    max-width: 30rem;
+    font-size: 1.15rem;
+    color: rgba(239, 230, 212, 0.85);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2.1rem;
+  }
+
+  .sheet {
+    background: var(--parchment);
+    color: var(--charcoal);
+    border-radius: 3px;
+    box-shadow: 0 22px 50px -18px rgba(0, 0, 0, 0.55);
+    font-family: var(--font-mono);
+    overflow: hidden;
+  }
+
+  .sheet-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    background: var(--cherrywood);
+    color: var(--parchment);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+  }
+
+  .sheet-meta,
+  .sheet-rows {
+    padding-inline: 1rem;
+  }
+
+  .sheet-meta {
+    margin: 0;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--ink-rule);
+  }
+
+  .sheet-meta > div {
+    display: grid;
+    grid-template-columns: 6.2rem 1fr;
+    gap: 0.8rem;
+    padding-block: 0.22rem;
+  }
+
+  .sheet-meta dt {
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ash);
+    padding-top: 0.18rem;
+  }
+
+  .sheet-meta dd {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .sheet-rows {
+    padding-block: 0.9rem;
+    border-bottom: 1px solid var(--ink-rule);
+  }
+
+  .score-row {
+    display: grid;
+    grid-template-columns: 6.2rem 1fr;
+    gap: 0.8rem;
+    align-items: center;
+    padding-block: 0.32rem;
+  }
+
+  .score-label {
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  .score-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.32rem;
+  }
+
+  .score {
+    display: grid;
+    place-items: center;
+    min-width: 1.7rem;
+    height: 1.45rem;
+    padding-inline: 0.28rem;
+    font-size: 0.68rem;
+    color: rgba(28, 24, 20, 0.72);
+    border: 1px solid var(--ink-rule);
+    border-radius: 2px;
+  }
+
+  .score.on {
+    background: var(--ember);
+    border-color: var(--ember);
+    color: var(--parchment);
+    font-weight: 500;
+    opacity: 0;
+    transform: scale(0.6);
+    animation: tick-in 0.3s ease-out forwards;
+    animation-delay: calc(0.7s + var(--i) * 0.16s);
+  }
+
+  @keyframes tick-in {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .sheet-notes {
+    display: grid;
+    grid-template-columns: 6.2rem 1fr;
+    gap: 0.8rem;
+    align-items: baseline;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--ink-rule);
+  }
+
+  .sheet-notes span {
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  .sheet-verdict {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .sheet-total {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .sheet-stamp {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ember);
+    border: 2.5px solid var(--ember);
+    border-radius: 3px;
+    padding: 0.28rem 0.55rem;
+    transform: rotate(-4deg);
+    opacity: 0;
+    animation: stamp-in 0.32s cubic-bezier(0.2, 1.4, 0.4, 1) forwards;
+    animation-delay: 1.45s;
+  }
+
+  @keyframes stamp-in {
+    from {
+      opacity: 0;
+      transform: rotate(-10deg) scale(1.7);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(-4deg) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .score.on,
+    .sheet-stamp {
+      opacity: 1;
+      transform: rotate(-4deg) scale(1);
+      animation: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .sheet-col {
+      max-width: 27rem;
+    }
+  }
+</style>

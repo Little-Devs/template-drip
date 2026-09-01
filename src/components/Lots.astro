@@ -1,0 +1,152 @@
+---
+import { site } from '../data/site';
+const { lots } = site;
+---
+
+<section class="section" id={lots.id}>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{lots.eyebrow}</p>
+      <h2>{lots.heading}</h2>
+      <p class="lede">{lots.lead}</p>
+    </div>
+    <div class="cards">
+      {lots.items.map((lot) => (
+        <article class="card">
+          <img src={lot.image} alt={lot.alt} width="640" height="420" loading="lazy" />
+          <div class="body">
+            <p class="code">
+              <span class="chip" data-profile={lot.profile} aria-hidden="true"></span>
+              {lot.code}
+              <span class="profile">{lot.profile}</span>
+            </p>
+            <h3>{lot.name}</h3>
+            <dl class="spec">
+              <div><dt>Process</dt><dd>{lot.process}</dd></div>
+              <div><dt>Elevation</dt><dd>{lot.elevation}</dd></div>
+              <div><dt>Roast</dt><dd>{lot.roast}</dd></div>
+              <div><dt>Notes</dt><dd>{lot.notes}</dd></div>
+            </dl>
+            <p class="file-note">{lot.fileNote}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.4rem, 3vw, 2.2rem);
+  }
+
+  .card {
+    background: var(--parchment);
+    color: var(--charcoal);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    border-bottom: 1px solid var(--ink-rule-soft);
+  }
+
+  .body {
+    padding: 1.3rem 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .code {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cherrywood);
+  }
+
+  .chip {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 2px;
+    background: var(--ash);
+  }
+
+  .chip[data-profile='Filter'] {
+    background: var(--ember);
+  }
+
+  .chip[data-profile='Omni'] {
+    background: var(--cherrywood);
+  }
+
+  .chip[data-profile='Espresso'] {
+    background: var(--charcoal);
+  }
+
+  .profile {
+    margin-left: auto;
+    color: var(--ash);
+    letter-spacing: 0.08em;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    margin-top: 0.55rem;
+  }
+
+  .spec {
+    margin: 0.9rem 0 0;
+    border-top: 1px solid var(--ink-rule);
+  }
+
+  .spec > div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 0.8rem;
+    padding: 0.42rem 0;
+    border-bottom: 1px solid var(--ink-rule-soft);
+  }
+
+  .spec dt {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ash);
+    padding-top: 0.22rem;
+  }
+
+  .spec dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  .file-note {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(28, 24, 20, 0.78);
+  }
+
+  @media (max-width: 760px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
