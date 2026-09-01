@@ -3,10 +3,14 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "description": "Fitzroy coffee roastery and cupping room landing. Charcoal, cherrywood, cream. Astro 5 SSG.",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^5.17.1"
